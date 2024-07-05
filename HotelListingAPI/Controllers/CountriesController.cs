@@ -7,7 +7,7 @@ using HotelListingAPI.Contracts;
 
 namespace HotelListingAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/countries")]
     [ApiController]
     public class CountriesController : ControllerBase
     {

@@ -9,10 +9,13 @@ public class MapperConfiguration : Profile
 {
     public MapperConfiguration()
     {
-        CreateMap<CreateCountryRequestModel, Country>();
         CreateMap<Country, GetCountryResponseModel>();
         CreateMap<Country, GetCountryDetailsResponseModel>();
-        CreateMap<Hotel, GetHotelDetailsResponseModel>();
+        CreateMap<CreateCountryRequestModel, Country>();
         CreateMap<UpdateCountryRequestModel, Country>();
+
+        CreateMap<Hotel, GetHotelResponseModel>();
+        CreateMap<CreateHotelRequestModel, Hotel>();
+        CreateMap<UpdateHotelRequestModel, Hotel>();
     }
 }

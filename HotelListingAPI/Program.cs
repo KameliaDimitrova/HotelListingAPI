@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using HotelListingAPI.Data;
 using HotelListingAPI.Configurations;
 using HotelListingAPI.Contracts;
-using HotelListingAPI.Repository;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +13,10 @@ var conenctionString = builder.Configuration.GetConnectionString("HotelListingDb
 builder.Services.AddDbContext<HotelListingDbContext>(options => {
     options.UseSqlServer(conenctionString);
 });
+
+builder.Services.AddIdentityCore<User>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<HotelListingDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

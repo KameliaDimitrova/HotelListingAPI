@@ -51,4 +51,21 @@ public class AccountsController : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpPost]
+    [Route("refresh-token")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult> RefreshToken([FromBody] AuthenticateRequestModel request)
+    {
+        var result = await this.accountsService.VerifyRefreshToken(request);
+
+        if (result is null)
+        {
+            return Unauthorized();
+        }
+
+        return Ok(result);
+    }
 }

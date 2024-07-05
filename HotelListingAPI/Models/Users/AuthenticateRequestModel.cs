@@ -1,6 +1,6 @@
 ﻿namespace HotelListingAPI.Models.Users;
 
-public class AuthenticateResponseModel
+public class AuthenticateRequestModel : BaseUserModel
 {
     public required string UserId { get; set; }
 

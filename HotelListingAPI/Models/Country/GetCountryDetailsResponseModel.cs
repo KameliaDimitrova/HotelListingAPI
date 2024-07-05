@@ -6,5 +6,5 @@ public class GetCountryDetailsResponseModel : BaseCountryModel
 {
     public int Id { get; set; }
 
-    public virtual IList<GetHotelResponseModel> Hotels { get; set; }
+    public required virtual IList<GetHotelResponseModel> Hotels { get; set; } = [];
 }

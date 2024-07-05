@@ -2,13 +2,8 @@
 
 namespace HotelListingAPI.Data;
 
-public class HotelListingDbContext : DbContext
+public class HotelListingDbContext(DbContextOptions options) : DbContext(options)
 {
-    public HotelListingDbContext(DbContextOptions options) : base(options)
-    {
-
-    }
-
     public DbSet<Hotel> Hotels { get; set; }
 
     public DbSet<Country> Countries { get; set; }
@@ -22,18 +17,21 @@ public class HotelListingDbContext : DbContext
                 Id = 1,
                 Name = "Jamica",
                 ShortName = "JM",
+                Hotels = []
             },
             new Country
             {
                 Id = 2,
                 Name = "Bahamas",
                 ShortName = "BS",
+                Hotels = []
             },
             new Country
             {
                 Id = 3,
                 Name = "Cayman island",
                 ShortName = "CI",
+                Hotels = []
             }
         );
 

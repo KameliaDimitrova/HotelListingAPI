@@ -4,14 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelListingAPI.Repository;
 
-public class CountriesRepository : Repository<Country>, ICountriesRepository
+public class CountriesRepository(HotelListingDbContext context) : Repository<Country>(context), ICountriesRepository
 {
-    private readonly HotelListingDbContext context;
-
-    public CountriesRepository(HotelListingDbContext context) : base(context)
-    {
-        this.context = context;
-    }
+    private readonly HotelListingDbContext context = context;
 
     public async Task<Country?> GetDetails(int id)
     {

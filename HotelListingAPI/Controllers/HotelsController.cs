@@ -9,18 +9,12 @@ namespace HotelListingAPI.Controllers
 {
     [Route("api/hotels")]
     [ApiController]
-    public class HotelsController : ControllerBase
+    public class HotelsController(
+        IHotelsRepository hotelsRepository,
+        IMapper mapper) : ControllerBase
     {
-        private readonly IHotelsRepository hotelsRepository;
-        private readonly IMapper mapper;
-
-        public HotelsController(
-            IHotelsRepository hotelsRepository,
-            IMapper mapper)
-        {
-            this.hotelsRepository = hotelsRepository;
-            this.mapper = mapper;
-        }
+        private readonly IHotelsRepository hotelsRepository = hotelsRepository;
+        private readonly IMapper mapper = mapper;
 
         // GET: api/Hotels
         [HttpGet]

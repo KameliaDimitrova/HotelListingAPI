@@ -59,13 +59,12 @@ public class AccountsService : IAccountsService
         }
 
         var token = await GenerateToken();
-        var refreshToken = await CreateRefreshTokenAsync();
 
         var result = new AuthenticateResponseModel
         {
             UserId = user.Id,
             Token = token,
-            RefreshToken = refreshToken
+            RefreshToken = await CreateRefreshTokenAsync()
         };
 
         return result;

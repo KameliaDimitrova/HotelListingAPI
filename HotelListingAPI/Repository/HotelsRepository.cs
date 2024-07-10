@@ -1,8 +1,9 @@
-﻿using HotelListingAPI.Contracts;
+﻿using AutoMapper;
+using HotelListingAPI.Contracts;
 using HotelListingAPI.Data;
 
 namespace HotelListingAPI.Repository;
 
-public class HotelsRepository(HotelListingDbContext context) : Repository<Hotel>(context), IHotelsRepository
+public class HotelsRepository(HotelListingDbContext context, IMapper mapper) : Repository<Hotel>(context, mapper), IHotelsRepository
 {
 }

@@ -10,6 +10,7 @@ using System.Text;
 using HotelListingAPI.Middleware;
 using Asp.Versioning;
 using Microsoft.Net.Http.Headers;
+using Microsoft.AspNetCore.OData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +94,14 @@ builder.Services.AddResponseCaching(options =>
 {
     options.MaximumBodySize = 1024;
     options.UseCaseSensitivePaths = true;
+});
+
+builder.Services.AddControllers().AddOData(options=>
+{
+    options
+        .Select()
+        .Filter()
+        .OrderBy();
 });
 
 var app = builder.Build();

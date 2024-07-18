@@ -25,9 +25,7 @@ namespace HotelListingAPI.Controllers
         [EnableQuery]
         public async Task<ActionResult<IEnumerable<GetCountryResponseModel>>> GetCountries()
         {
-            var countries =  await countryRepository.GetAllAsync();
-
-            var response = this.mapper.Map<IEnumerable<GetCountryResponseModel>>(countries);
+            var response =  await countryRepository.GetAllAsync<GetCountryResponseModel>();
 
             return this.Ok(response);
         }

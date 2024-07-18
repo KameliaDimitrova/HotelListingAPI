@@ -3,13 +3,13 @@ using HotelListingAPI.Core.Contracts;
 using HotelListingAPI.Infrastructure;
 using HotelListingAPI.Models.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using NuGet.Protocol;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace HotelListingAPI.Services;
+namespace HotelListingAPI.Core.Services;
 
 public class AccountsService : IAccountsService
 {

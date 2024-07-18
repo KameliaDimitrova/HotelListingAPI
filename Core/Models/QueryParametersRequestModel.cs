@@ -4,7 +4,7 @@ public class QueryParametersRequestModel
 {
     private int pageSize = 10;
 
-    public int StartIngex { get; set; }
+    public int StartIndex { get; set; }
 
     public int PageSize
     {

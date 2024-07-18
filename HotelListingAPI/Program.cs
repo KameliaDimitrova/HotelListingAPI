@@ -1,16 +1,16 @@
 using Serilog;
 using Microsoft.EntityFrameworkCore;
-using HotelListingAPI.Data;
+using HotelListingAPI.Infrastructure;
 using HotelListingAPI.Configurations;
-using HotelListingAPI.Contracts;
+using HotelListingAPI.Core.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using HotelListingAPI.Middleware;
 using Asp.Versioning;
-using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.OData;
+using Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,18 +59,6 @@ builder.Host.UseSerilog((context, loggerConfiguration)
 
 builder.Services.AddAutoMapper(typeof(MapperConfiguration));
 
-builder.Services.Scan(scan => scan
-    .FromCallingAssembly()
-    .AddClasses(calsses => calsses.AssignableTo(typeof(IRepository<>)))
-    .AsMatchingInterface()
-    .WithTransientLifetime());
-
-builder.Services.Scan(scan => scan
-    .FromCallingAssembly()
-    .AddClasses(calsses => calsses.AssignableTo(typeof(IService)))
-    .AsMatchingInterface()
-    .WithTransientLifetime());
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -89,6 +77,8 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Key"] ?? string.Empty))
         };
     });
+
+builder.Services.AddApplication();
 
 builder.Services.AddResponseCaching(options =>
 {

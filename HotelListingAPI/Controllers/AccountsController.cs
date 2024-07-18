@@ -1,4 +1,4 @@
-﻿using HotelListingAPI.Contracts;
+﻿using HotelListingAPI.Core.Contracts;
 using HotelListingAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 

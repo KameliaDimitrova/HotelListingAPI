@@ -141,6 +141,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     Predicate = healthCheck => healthCheck.Tags.Contains("custom"),
